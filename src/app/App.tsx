@@ -1,9 +1,7 @@
-import {render, version} from "inferno";
+import {version} from "inferno";
 import Component from "inferno-component";
 
-const container = document.getElementById("app");
-
-class App extends Component<any, any> {
+export class App extends Component<any, any> {
   private tsxVersion: string;
 
   constructor(props: any, context: any) {
@@ -20,5 +18,3 @@ class App extends Component<any, any> {
     );
   }
 }
-
-render(<App />, container);

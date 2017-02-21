@@ -25,7 +25,7 @@ module.exports = (env = {}) => {
 
   return {
     entry: {
-      bundle: root("src/App.tsx")
+      bundle: root("src/main.tsx")
     },
     output: output,
 
@@ -39,12 +39,12 @@ module.exports = (env = {}) => {
           test: /\.tsx?/,
           use: ["babel-loader", "awesome-typescript-loader"],
           exclude: /node_modules/
-        },
+        }/*,
         {
           test: /\.jsx?/,
           use: "babel-loader",
           include: /node_modules/
-        }
+        }*/
       ]
     },
 
