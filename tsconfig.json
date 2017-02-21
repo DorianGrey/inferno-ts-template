@@ -25,7 +25,9 @@
     "node_modules"
   ],
   "files": [
-    "src/custom-typings/jsx-globals.d.ts"
+    "src/custom-typings/jsx-globals.d.ts",
+    "src/custom-typings/scss.d.ts",
+    "src/custom-typings/webpack.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

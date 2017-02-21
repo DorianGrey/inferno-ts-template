@@ -1,4 +1,7 @@
+import "./styles/main.scss";
+
 import {render} from "inferno";
+
 import {App} from "./app/App";
 import {bootloader} from "./bootloader";
 

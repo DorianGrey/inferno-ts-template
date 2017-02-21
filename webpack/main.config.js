@@ -7,6 +7,8 @@ const merge = require("webpack-merge");
 
 module.exports = (env = {}) => {
 
+  console.warn(process.env.NODE_ENV);
+
   env.IS_DEV = process.env.NODE_ENV !== "production";
 
   /** See the docs for more information about how merging configs is implemented:

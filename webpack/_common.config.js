@@ -10,7 +10,9 @@ const {CheckerPlugin} = require("awesome-typescript-loader");
 const {
         root,
         NODE_CONFIG,
-        getHtmlTemplatePlugin
+        RULE_SASS_LOADING,
+        getHtmlTemplatePlugin,
+        getPerformanceOptions
       } = require("./_constants");
 
 module.exports = (env = {}) => {
@@ -39,14 +41,17 @@ module.exports = (env = {}) => {
           test: /\.tsx?/,
           use: ["babel-loader", "awesome-typescript-loader"],
           exclude: /node_modules/
-        }/*,
+        },
         {
           test: /\.jsx?/,
           use: "babel-loader",
           include: /node_modules/
-        }*/
+        },
+        RULE_SASS_LOADING(env.IS_DEV)
       ]
     },
+
+    performance: getPerformanceOptions(env.IS_DEV),
 
     /**
      * Include polyfills or mocks for various node stuff
@@ -57,11 +62,13 @@ module.exports = (env = {}) => {
     plugins: [
       new DefinePlugin({
         ENV: JSON.stringify(process.env.NODE_ENV || "development"),
-        "process.env": JSON.stringify(process.env.NODE_ENV || "development")
+        "process.env": {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development")
+        }
       }),
       new ProgressPlugin(),
       new CheckerPlugin(),
-      getHtmlTemplatePlugin(true)
+      getHtmlTemplatePlugin(env.IS_DEV)
     ]
   };
 
