@@ -1,8 +1,21 @@
 {
   "name": "inferno-ts-template",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Infernojs + Typescript playground",
+  "author": {
+    "name": "Christian Linne",
+    "email": "ShadowVampire@web.de"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DorianGrey/inferno-ts-template.git"
+  },
+  "keywords": [
+    "webpack",
+    "infernojs",
+    "typescript"
+  ],
   "devDependencies": {
     "awesome-typescript-loader": "^3.0.4",
     "babel-core": "^6.23.1",
@@ -28,5 +41,10 @@
   "scripts": {
     "start": "rimraf .tmp && webpack-dev-server --config webpack/main.config.js",
     "dist": "rimraf .dist &&  cross-env NODE_ENV=production webpack --config webpack/main.config.js"
+  },
+  "engines": {
+    "node": ">=6.9",
+    "npm": ">=3.10",
+    "yarn": ">=0.20.0"
   }
 }
