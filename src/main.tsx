@@ -2,12 +2,17 @@ import "./styles/main.scss";
 
 import {render} from "inferno";
 
-import {App} from "./app/App";
 import {bootloader} from "./bootloader";
+import {routes} from "./app/routes";
 
 function Main() {
   const container = document.getElementById("app");
-  render(<App />, container);
+  // Clear placeholding content.
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  render(routes, container);
 }
 
 bootloader(Main);

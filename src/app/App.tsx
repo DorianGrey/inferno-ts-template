@@ -1,19 +1,24 @@
-import {version} from "inferno";
+import "./app.scss";
+
+import {Props} from "inferno";
+import {Link} from "inferno-router";
 import Component from "inferno-component";
 
 export class App extends Component<any, any> {
-  private tsxVersion: string;
 
-  constructor(props: any, context: any) {
+  constructor(props: Props, context: any) {
     super(props, context);
-
-    this.tsxVersion = "2.1.6";
   }
 
   render() {
     return (
-      <div>
-        <h1>{`Welcome to Inferno ${version} TSX ${this.tsxVersion}`}</h1>
+      <div className="navigation">
+        <h1>{`Demo application`}</h1>
+        <nav>
+          <Link to="/">Test 1</Link>
+          <Link to="/todos">Test 2</Link>
+        </nav>
+        {this.props.children}
       </div>
     );
   }
