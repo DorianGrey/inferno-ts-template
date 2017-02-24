@@ -3,7 +3,7 @@ import "./styles/main.scss";
 import {render} from "inferno";
 
 import {bootloader} from "./bootloader";
-import {routes} from "./app/routes";
+import {routes} from "./app/Routes";
 
 function Main() {
   const container = document.getElementById("app");

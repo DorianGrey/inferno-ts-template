@@ -1,4 +1,4 @@
-import "./app.scss";
+import "./App.scss";
 
 import {Props} from "inferno";
 import {Link} from "inferno-router";
