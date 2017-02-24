@@ -42,11 +42,6 @@ module.exports = (env = {}) => {
           use: ["babel-loader", "awesome-typescript-loader"],
           exclude: /node_modules/
         },
-        {
-          test: /\.jsx?/,
-          use: "babel-loader",
-          include: /node_modules/
-        },
         RULE_SASS_LOADING(env.IS_DEV)
       ]
     },
