@@ -15,8 +15,8 @@ export class App extends Component<any, any> {
       <div className="navigation">
         <h1>{`Demo application`}</h1>
         <nav>
-          <Link to="/">Test 1</Link>
-          <Link to="/todos">Test 2</Link>
+          <Link to="/" activeClassName="active">Test 1</Link>
+          <Link to="/todos" activeClassName="active">Test 2</Link>
         </nav>
         {this.props.children}
       </div>
