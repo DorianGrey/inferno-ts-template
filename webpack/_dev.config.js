@@ -1,3 +1,4 @@
+const NamedModulesPlugin = require("webpack/lib/NamedModulesPlugin");
 const devServerConfig = require("./_dev-server.config.js");
 
 const {
@@ -10,6 +11,9 @@ module.exports = (env = {}) => {
       path: root(".tmp")
     },
     devtool: "inline-source-map",
-    devServer: devServerConfig
+    devServer: devServerConfig,
+    plugins: [
+      new NamedModulesPlugin()
+    ]
   };
 };

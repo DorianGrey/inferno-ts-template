@@ -1,5 +1,6 @@
 const {NoEmitOnErrorsPlugin} = require("webpack");
 const UglifyJsPlugin         = require("webpack/lib/optimize/UglifyJsPlugin");
+const HashedModuleIdsPlugin  = require("webpack/lib/HashedModuleIdsPlugin");
 
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const ExtractTextPlugin    = require("extract-text-webpack-plugin");
@@ -27,7 +28,9 @@ module.exports = (env = {}) => {
      *
      * See: http://webpack.github.io/docs/stylesheets.html#separate-css-bundle
      */
-    new ExtractTextPlugin("[name].[contenthash].css")
+    new ExtractTextPlugin("[name].[contenthash].css"),
+
+    new HashedModuleIdsPlugin()
   ];
 
   if (env.analyze) {
