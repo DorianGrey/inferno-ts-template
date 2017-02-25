@@ -1,1 +1,1 @@
-declare const ENV: "production" |"development";
+declare const ENV: "production" | "development" | "test";
