@@ -17,6 +17,7 @@ export class App extends Component<any, any> {
         <nav>
           <Link to="/" activeClassName="active">Test 1</Link>
           <Link to="/todos" activeClassName="active">Test 2</Link>
+          <Link to="/lazy" activeClassName="active">Lazy test</Link>
         </nav>
         {this.props.children}
       </div>

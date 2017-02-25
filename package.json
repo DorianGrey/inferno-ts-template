@@ -60,9 +60,9 @@
     "prestart": "rimraf .tmp",
     "start": "webpack-dev-server --config webpack/main.config.js",
     "start:dist": "npm run dist && node example-dist-server/server.js .dist",
-    "predist": "rimraf dist",
+    "predist": "rimraf .dist",
     "dist": "cross-env NODE_ENV=production webpack --config webpack/main.config.js",
-    "predist:analyze": "rimraf dist",
+    "predist:analyze": "rimraf .dist",
     "dist:analyze": "cross-env NODE_ENV=production webpack --config webpack/main.config.js --env.analyze=true"
   },
   "engines": {
