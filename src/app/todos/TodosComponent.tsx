@@ -1,4 +1,4 @@
-export function TestComponent2(_props: any) {
+export function TodosComponent(_props: any) {
   return (
     <div>
       Even more fancy stuff here!

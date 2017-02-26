@@ -15,11 +15,13 @@ export class App extends Component<any, any> {
       <div className="navigation">
         <h1>{`Demo application`}</h1>
         <nav>
-          <Link to="/" activeClassName="active">Test 1</Link>
-          <Link to="/todos" activeClassName="active">Test 2</Link>
-          <Link to="/lazy" activeClassName="active">Lazy test</Link>
+          <Link to="/input-test" activeClassName="active">Input test</Link>
+          <Link to="/todos" activeClassName="active">Todo list</Link>
+          <Link to="/lazy-test" activeClassName="active">Lazy loading test</Link>
         </nav>
-        {this.props.children}
+        <div className="page-body">
+          {this.props.children}
+        </div>
       </div>
     );
   }

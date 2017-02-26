@@ -1,11 +1,11 @@
-import {IndexRoute, Router, Route} from "inferno-router";
+import {IndexRoute, Redirect, Router, Route} from "inferno-router";
 import Component from "inferno-component";
 import createBrowserHistory from "history/createBrowserHistory";
 
 import {App} from "./App";
 import {NotFound} from "./404/404";
-import {TestComponent} from "./test1/TestComponent";
-import {TestComponent2} from "./test2/TestComponent2";
+import {InputTestComponent} from "./inputTest/InputTestComponent";
+import {TodosComponent} from "./todos/TodosComponent";
 
 const browserHistory = createBrowserHistory();
 
@@ -19,9 +19,10 @@ function loadLazyComponent(_nextState: any, callback: (error: any, comp: Compone
 export const routes = (
   <Router history={ browserHistory }>
     <IndexRoute component={ App }>
-      <IndexRoute component={ TestComponent }/>
-      <Route path="todos" component={ TestComponent2 }/>
-      <Route path="lazy" getComponent={ loadLazyComponent }/>
+      <Redirect from="/" to="/input-test" />
+      <Route path="input-test" component={ InputTestComponent }/>
+      <Route path="todos" component={ TodosComponent }/>
+      <Route path="lazy-test" getComponent={ loadLazyComponent }/>
       <Route path="*" component={ NotFound }/>
     </IndexRoute>
   </Router>
