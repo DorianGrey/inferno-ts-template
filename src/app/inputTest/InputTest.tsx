@@ -1,14 +1,15 @@
-import "./InputTestComponent.scss";
+import "./InputTest.scss";
 
 import Component from "inferno-component";
 import {Props} from "inferno";
+import {translate} from "../translate";
 
-interface InputTestComponentState {
+interface InputTestState {
   text: string;
 }
 
-export class InputTestComponent extends Component<any, any> {
-  state: InputTestComponentState = {text: ""};
+export class InputTest extends Component<any, any> {
+  state: InputTestState = {text: ""};
 
   constructor(props: Props, context: any) {
     super(props, context);
@@ -24,8 +25,8 @@ export class InputTestComponent extends Component<any, any> {
 
     return (
       <div className="input-test-component">
-        <h3>Input test component</h3>
-        <div>You typed <span className="display" dangerouslySetInnerHTML={{__html: typedText}}/></div>
+        <h3>{translate("inputTest.heading")}</h3>
+        <div dangerouslySetInnerHTML={{__html: translate("inputTest.display", {value: typedText})}}></div>
         <input type="text" onKeyUp={ this.updateDisplayedText.bind(this) }/>
       </div>
     );

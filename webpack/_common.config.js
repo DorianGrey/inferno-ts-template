@@ -32,7 +32,11 @@ module.exports = (env = {}) => {
     output: output,
 
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"]
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      alias: {
+        "react": "inferno-compat",
+        "react-dom": "inferno-compat"
+      }
     },
 
     module: {

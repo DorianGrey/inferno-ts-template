@@ -1,14 +1,15 @@
-import "./LazyComponent.scss";
+import "./LazyTest.scss";
 
 import Component from "inferno-component";
 import {Props} from "inferno";
+import {translate} from "../translate";
 
-interface LazyComponentState {
+interface LazyTestState {
   seconds: number;
 }
 
-export class LazyComponent extends Component<any, any> {
-  state: LazyComponentState = {seconds: 0};
+export class LazyTest extends Component<any, any> {
+  state: LazyTestState = {seconds: 0};
 
   pendingInterval: number;
 
@@ -27,8 +28,8 @@ export class LazyComponent extends Component<any, any> {
   render() {
     return (
       <div className="lazy-component">
-        <p>This is a lazily loaded test component.</p>
-        <p>You have been watching this component for {this.state.seconds} seconds.</p>
+        <p>{translate("lazyTest.text")}</p>
+        <p>{translate("lazyTest.info", {value: this.state.seconds})}</p>
       </div>
     );
   }

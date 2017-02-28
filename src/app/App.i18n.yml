@@ -1,0 +1,14 @@
+app:
+  title:
+    de: Demo Anwendung
+    en: Demo application
+  links:
+    inputTest:
+      de: Eingabe test
+      en: input test
+    todo:
+      de: Aufgabenliste
+      en: Todo list
+    lazyTest:
+      de: Nachlade-Test
+      en: Lazy loading test

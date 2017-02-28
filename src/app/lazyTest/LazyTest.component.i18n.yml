@@ -1,0 +1,7 @@
+lazyTest:
+  text:
+    de: Diese Komponente wurde nachgeladen.
+    en: This is a lazily loaded test component.
+  info:
+    de: Sie haben diese Komponente für {{value}} Sekunden betrachtet.
+    en: You have been watching this component for {{value}} seconds.
