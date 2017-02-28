@@ -1,7 +1,7 @@
-import {get, template, templateSettings} from "lodash";
-import messages from "../generated/translations";
+import get from "lodash-es/get";
+import template from "lodash-es/template";
 
-templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+import messages from "../generated/translations";
 
 let currentLang         = "en";
 let currentTranslations = messages[currentLang];
@@ -16,7 +16,7 @@ export function translate(key: string, values: {[key: string]: any} = {}): strin
   if (!potTranslation) {
     return key;
   } else {
-    const compiled = template(potTranslation);
+    const compiled = template(potTranslation, {interpolate: /{{([\s\S]+?)}}/g});
     return compiled(values);
   }
 }
