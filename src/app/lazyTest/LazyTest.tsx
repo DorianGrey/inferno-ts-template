@@ -2,18 +2,18 @@ import "./LazyTest.scss";
 
 import Component from "inferno-component";
 import {Props} from "inferno";
-import {translate} from "../translate";
+import {TranslateProviderContext} from "../translateProvider/TranslateProvider";
 
 interface LazyTestState {
   seconds: number;
 }
 
-export class LazyTest extends Component<any, any> {
+export class LazyTest extends Component<any, any & TranslateProviderContext> {
   state: LazyTestState = {seconds: 0};
 
   pendingInterval: number;
 
-  constructor(props: Props, context: any) {
+  constructor(props: Props, context: any & TranslateProviderContext) {
     super(props, context);
   }
 
@@ -28,8 +28,8 @@ export class LazyTest extends Component<any, any> {
   render() {
     return (
       <div className="lazy-component">
-        <p>{translate("lazyTest.text")}</p>
-        <p>{translate("lazyTest.info", {value: this.state.seconds})}</p>
+        <p>{this.context.translate("lazyTest.text")}</p>
+        <p>{this.context.translate("lazyTest.info", {value: this.state.seconds})}</p>
       </div>
     );
   }

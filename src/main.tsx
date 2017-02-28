@@ -4,7 +4,7 @@ import {render} from "inferno";
 
 import {bootloader} from "./bootloader";
 import {routes} from "./app/Routes";
-
+import {TranslateProvider} from "./app/translateProvider/TranslateProvider";
 
 
 function Main() {
@@ -17,7 +17,12 @@ function Main() {
     container.removeChild(container.firstChild);
   }
 
-  render(routes, container);
+  render(
+    <TranslateProvider language="en">
+      {routes}
+    </TranslateProvider>,
+    container
+  );
 }
 
 bootloader(Main);
