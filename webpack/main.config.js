@@ -4,12 +4,14 @@ const prodConfig   = require("./_production.config");
 
 const merge = require("webpack-merge");
 
+const logger = require("log4js").getLogger("webpack-build");
 
 module.exports = (env = {}) => {
 
-  console.warn(process.env.NODE_ENV);
-
   env.IS_DEV = process.env.NODE_ENV !== "production";
+
+  logger.debug("Using build env config:", JSON.stringify(env, null, 4));
+  logger.debug("Build mode:", env.IS_DEV ? "development" : "production");
 
   /** See the docs for more information about how merging configs is implemented:
    * https://github.com/survivejs/webpack-merge/blob/master/README.md

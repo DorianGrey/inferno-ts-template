@@ -2,8 +2,9 @@ const {NoEmitOnErrorsPlugin} = require("webpack");
 const UglifyJsPlugin         = require("webpack/lib/optimize/UglifyJsPlugin");
 const HashedModuleIdsPlugin  = require("webpack/lib/HashedModuleIdsPlugin");
 
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const ExtractTextPlugin    = require("extract-text-webpack-plugin");
+const BundleAnalyzerPlugin  = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const ExtractTextPlugin     = require("extract-text-webpack-plugin");
+const ClosureCompilerPlugin = require("webpack-closure-compiler");
 
 const {
         root
@@ -32,6 +33,44 @@ module.exports = (env = {}) => {
 
     new HashedModuleIdsPlugin()
   ];
+
+  if (env.useClosureCompiler) {
+    plugins.push(
+      new ClosureCompilerPlugin({
+        compiler: {
+          language_in: "ECMASCRIPT5",
+          language_out: "ECMASCRIPT5"
+          // Note: compilation_level: 'ADVANCED' does not work (yet?);
+        },
+        concurrency: 3,
+      })
+    );
+    /* Recent output:
+     Version: webpack 2.2.1
+     Time: 12006ms
+     Asset                                             Size  Chunks             Chunk Names
+     0.chunk.f9a3db156c0b166feb59.js                1.67 kB       0  [emitted]
+     bundle.be7624777d8e3aae3938.js                 72.3 kB       1  [emitted]  bundle
+     bundle.62e9b34ce099a1ddb3d0700711c96643.css    2.98 kB       1  [emitted]  bundle
+     index.html                                   496 bytes          [emitted]
+     */
+  } else {
+    plugins.push(
+      new UglifyJsPlugin({
+        beautify: false,
+        comments: false
+      })
+    );
+    /* Recent output:
+     Version: webpack 2.2.1
+     Time: 7676ms
+     Asset                                             Size  Chunks             Chunk Names
+     0.chunk.f9a3db156c0b166feb59.js                1.73 kB       0  [emitted]
+     bundle.be7624777d8e3aae3938.js                 77.6 kB       1  [emitted]  bundle
+     bundle.62e9b34ce099a1ddb3d0700711c96643.css    2.98 kB       1  [emitted]  bundle
+     index.html                                   496 bytes          [emitted]
+     */
+  }
 
   if (env.analyze) {
     plugins.push(new BundleAnalyzerPlugin({analyzerPort: 5000}));
