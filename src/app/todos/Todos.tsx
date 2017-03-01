@@ -1,9 +1,9 @@
-import {TranslateProviderContext} from "../translateProvider/TranslateProvider";
+import {Translate} from "../translateProvider/Translate";
 
-export function Todos(_props: any, context: any & TranslateProviderContext) {
+export function Todos(_props: any) {
   return (
     <div>
-      {context.translate("todos.heading")}
+      <Translate entry="todos.heading"/>
     </div>
   );
 }

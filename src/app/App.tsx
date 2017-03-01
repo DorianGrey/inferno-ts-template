@@ -5,6 +5,7 @@ import {Link} from "inferno-router";
 import Component from "inferno-component";
 
 import {TranslateProviderContext} from "./translateProvider/TranslateProvider";
+import {Translate} from "./translateProvider/Translate";
 
 export class App extends Component<any, any & TranslateProviderContext> {
 
@@ -15,11 +16,11 @@ export class App extends Component<any, any & TranslateProviderContext> {
   render() {
     return (
       <div className="navigation">
-        <h1>{this.context.translate("app.title")}</h1>
+        <h1><Translate entry="app.title"/></h1>
         <nav>
-          <Link to="/input-test" activeClassName="active">{this.context.translate("app.links.inputTest")}</Link>
-          <Link to="/todos" activeClassName="active">{this.context.translate("app.links.todo")}</Link>
-          <Link to="/lazy-test" activeClassName="active">{this.context.translate("app.links.lazyTest")}</Link>
+          <Link to="/input-test" activeClassName="active"><Translate entry="app.links.inputTest"/></Link>
+          <Link to="/todos" activeClassName="active"><Translate entry="app.links.todo"/></Link>
+          <Link to="/lazy-test" activeClassName="active"><Translate entry="app.links.lazyTest"/></Link>
         </nav>
         <div className="page-body">
           {this.props.children}

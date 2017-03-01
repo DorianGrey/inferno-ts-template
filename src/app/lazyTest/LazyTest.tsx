@@ -3,6 +3,7 @@ import "./LazyTest.scss";
 import Component from "inferno-component";
 import {Props} from "inferno";
 import {TranslateProviderContext} from "../translateProvider/TranslateProvider";
+import {Translate} from "../translateProvider/Translate";
 
 interface LazyTestState {
   seconds: number;
@@ -28,8 +29,8 @@ export class LazyTest extends Component<any, any & TranslateProviderContext> {
   render() {
     return (
       <div className="lazy-component">
-        <p>{this.context.translate("lazyTest.text")}</p>
-        <p>{this.context.translate("lazyTest.info", {value: this.state.seconds})}</p>
+        <p><Translate entry="lazyTest.text"/></p>
+        <p><Translate entry="lazyTest.info" bindings={ {value: this.state.seconds} }/></p>
       </div>
     );
   }

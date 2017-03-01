@@ -3,6 +3,7 @@ import "./InputTest.scss";
 import Component from "inferno-component";
 import {Props} from "inferno";
 import {TranslateProviderContext} from "../translateProvider/TranslateProvider";
+import {Translate} from "../translateProvider/Translate";
 
 interface InputTestState {
   text: string;
@@ -25,7 +26,7 @@ export class InputTest extends Component<any, any & TranslateProviderContext> {
 
     return (
       <div className="input-test-component">
-        <h3>{this.context.translate("inputTest.heading")}</h3>
+        <h3><Translate entry="inputTest.heading"/></h3>
         <div dangerouslySetInnerHTML={{__html: this.context.translate("inputTest.display", {value: typedText})}}></div>
         <input type="text" onKeyUp={ this.updateDisplayedText.bind(this) }/>
       </div>
