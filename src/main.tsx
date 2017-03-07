@@ -4,7 +4,7 @@ import {render} from "inferno";
 
 import {bootloader} from "./bootloader";
 import {routes} from "./app/Routes";
-import {TranslateProvider} from "./app/translateProvider/TranslateProvider";
+import {TranslateProvider} from "./app/i18n/i18nProvider";
 
 
 function Main() {

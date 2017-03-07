@@ -1,4 +1,4 @@
-import {Translate} from "../translateProvider/Translate";
+import {Translate} from "../i18n/Translate";
 
 export function Todos(_props: any) {
   return (
