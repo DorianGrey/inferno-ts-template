@@ -16,6 +16,10 @@ export interface I18nProviderContext {
 
 export class TranslateProvider extends Component<any, any> {
 
+  static getAvailableLanguages(): string[] {
+    return Object.keys(messages);
+  }
+
   state: {
     currentLang: string;
   } = {currentLang: "en"};
@@ -26,6 +30,10 @@ export class TranslateProvider extends Component<any, any> {
     super(props, context);
 
     this.updateLanguage(this.props.language);
+  }
+
+  shouldComponentUpdate(nextProps: Props & I18nProviderProps): boolean {
+    return nextProps.language !== this.state.currentLang;
   }
 
   render() {

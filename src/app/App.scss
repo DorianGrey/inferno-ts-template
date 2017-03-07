@@ -2,6 +2,17 @@ h1, h2 {
   margin-left: 1rem;
 }
 
+.language-select {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: 7px;
+  border-radius: 50%;
+  background: lightgrey;
+  color: red;
+  cursor: pointer;
+}
+
 nav {
   display: flex;
 
