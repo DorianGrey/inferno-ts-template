@@ -38,7 +38,7 @@ module.exports = (env = {}) => {
     plugins.push(
       new ClosureCompilerPlugin({
         compiler: {
-          language_in: "ECMASCRIPT5",
+          language_in: "ECMASCRIPT6",
           language_out: "ECMASCRIPT5"
           // Note: compilation_level: 'ADVANCED' does not work (yet?);
         },
