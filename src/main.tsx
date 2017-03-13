@@ -1,9 +1,14 @@
 import "./styles/main.scss";
 
 import {render} from "inferno";
+import {Provider} from "inferno-mobx";
 
 import {bootloader} from "./bootloader";
 import {Main} from "./app/Main";
+
+import {i18nStore} from "./app/stores/i18n.store";
+import {todoStore} from "./app/stores/todos.store";
+import {tabViewedStore} from "./app/stores/tabViewed.store";
 
 function main() {
   if (process.env.NODE_ENV !== "production") {
@@ -16,7 +21,9 @@ function main() {
   }
 
   render(
-    <Main />,
+    <Provider i18nStore={ i18nStore } todoStore={ todoStore } tabViewedStore={ tabViewedStore } >
+      <Main />
+    </Provider>,
     container
   );
 }
