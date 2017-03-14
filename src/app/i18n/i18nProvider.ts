@@ -33,10 +33,6 @@ export class I18nProvider extends Component<any, any> {
   defaultFormatters: {
     dateTime: Intl.DateTimeFormat;
     number: Intl.NumberFormat;
-  } = {
-    // These will be set through "updateLanguage".
-    dateTime: null, 
-    number: null
   };
 
   currentTranslations: {[key: string]: string};
@@ -99,7 +95,11 @@ export class I18nProvider extends Component<any, any> {
     this.props.i18nStore.currentLang = newLang;
     this.currentTranslations         = messages[this.props.i18nStore.currentLang];
 
-    this.defaultFormatters.dateTime = new Intl.DateTimeFormat(this.props.i18nStore.currentLang, I18nProvider.defaultDateFormatOptions);
-    this.defaultFormatters.number = new Intl.NumberFormat(this.props.i18nStore.currentLang);
+    const newDateTimeFmt = new Intl.DateTimeFormat(this.props.i18nStore.currentLang, I18nProvider.defaultDateFormatOptions);
+    const newNumberFmt = new Intl.NumberFormat(this.props.i18nStore.currentLang);
+    this.defaultFormatters = {
+      dateTime: newDateTimeFmt,
+      number: newNumberFmt
+    };
   }
 }

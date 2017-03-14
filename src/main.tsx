@@ -17,19 +17,23 @@ function main() {
     require("inferno-devtools");
   }
   const container = document.getElementById("app");
-  // Clear placeholding content.
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
+  if (container != null) {
+    // Clear placeholding content.
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
 
-  render(
-    <Provider i18nStore={ i18nStore } todoStore={ todoStore } tabViewedStore={ tabViewedStore } >
-      <I18nProvider>
-        {routes}
-      </I18nProvider>
-    </Provider>,
-    container
-  );
+    render(
+      <Provider i18nStore={ i18nStore } todoStore={ todoStore } tabViewedStore={ tabViewedStore } >
+        <I18nProvider>
+          {routes}
+        </I18nProvider>
+      </Provider>,
+      container
+    );
+  } else {
+    throw Error("Application anchor could not be found, aborting...");
+  }
 }
 
 bootloader(main);
