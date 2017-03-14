@@ -4,7 +4,9 @@ import {render} from "inferno";
 import {Provider} from "inferno-mobx";
 
 import {bootloader} from "./bootloader";
-import {Main} from "./app/Main";
+
+import {I18nProvider} from "./app/i18n/i18nProvider";
+import {routes} from "./app/Routes";
 
 import {i18nStore} from "./app/stores/i18n.store";
 import {todoStore} from "./app/stores/todos.store";
@@ -22,7 +24,9 @@ function main() {
 
   render(
     <Provider i18nStore={ i18nStore } todoStore={ todoStore } tabViewedStore={ tabViewedStore } >
-      <Main />
+      <I18nProvider>
+        {routes}
+      </I18nProvider>
     </Provider>,
     container
   );

@@ -20,6 +20,25 @@ export class I18nProvider extends Component<any, any> {
     return Object.keys(messages);
   }
 
+  static readonly defaultDateFormatOptions: Intl.DateTimeFormatOptions = {
+    hour12: false,
+    year:   "numeric",
+    month:  "numeric",
+    day:    "numeric",
+    hour:   "numeric",
+    minute: "numeric",
+    second: "numeric"
+  };
+
+  defaultFormatters: {
+    dateTime: Intl.DateTimeFormat;
+    number: Intl.NumberFormat;
+  } = {
+    // These will be set through "updateLanguage".
+    dateTime: null, 
+    number: null
+  };
+
   currentTranslations: {[key: string]: string};
 
   initialized: boolean = false;
@@ -60,24 +79,27 @@ export class I18nProvider extends Component<any, any> {
 
   // TODO: Maybe offer a simpler way to format numbers.
   formatNumber(src: number, options?: Intl.NumberFormatOptions): string {
-    return new Intl.NumberFormat(this.props.i18nStore.currentLang, options).format(src);
+    if (!options) { 
+      return this.defaultFormatters.number.format(src);
+    } else {
+      return new Intl.NumberFormat(this.props.i18nStore.currentLang, options).format(src); 
+    }
   }
 
   // TODO: Maybe offer a simpler way to format dates.
   formatDateTime(src: Date | number, options?: Intl.DateTimeFormatOptions): string {
-    return new Intl.DateTimeFormat(this.props.i18nStore.currentLang, options).format(src);
+    if (!options) {
+      return this.defaultFormatters.dateTime.format(src);
+    } else {
+      return new Intl.DateTimeFormat(this.props.i18nStore.currentLang, options).format(src);
+    }
   }
 
   private updateLanguage(newLang: string): void {
     this.props.i18nStore.currentLang = newLang;
     this.currentTranslations         = messages[this.props.i18nStore.currentLang];
-    // TODO: We need to call for a re-render of all relevant children ... but how?
-    if (!this.initialized) {
-      this.initialized = true;
-    } else {
-      setTimeout(() => {
-        this.forceUpdate();
-      });
-    }
+
+    this.defaultFormatters.dateTime = new Intl.DateTimeFormat(this.props.i18nStore.currentLang, I18nProvider.defaultDateFormatOptions);
+    this.defaultFormatters.number = new Intl.NumberFormat(this.props.i18nStore.currentLang);
   }
 }
